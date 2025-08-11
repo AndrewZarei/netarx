@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solana Web Wallet | Fast & Secure Solana Management</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #14F195;
+      --secondary: #00D4FF;
+      --accent: #9945FF;
+      --dark: #0F1419;
+      --light: #F0FDF4;
+      --card-bg: #0F1419cc;
+      --glass: rgba(255,255,255,0.05);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0F1419 0%, #1E293B 100%);
+      color: var(--light);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    header {
+      background: none;
+      color: var(--light);
+      padding: 3rem 0 2rem 0;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #86EFAC;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .hero-section {
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .hero-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #86EFAC;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2rem;
+      border: 1.5px solid rgba(20,241,149,0.12);
+      transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px 0 rgba(20,241,149,0.18);
+      border: 1.5px solid var(--primary);
+    }
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .feature-card p {
+      color: #BBF7D0;
+      line-height: 1.6;
+    }
+    .solana-features {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2rem;
+      margin: 3rem 0;
+      border: 1.5px solid rgba(20,241,149,0.12);
+    }
+    .solana-features h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-item {
+      background: rgba(20,241,149,0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(20,241,149,0.2);
+      text-align: center;
+    }
+    .feature-item:hover {
+      background: rgba(20,241,149,0.15);
+      transform: scale(1.02);
+      transition: all 0.3s;
+    }
+    .feature-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .feature-item p {
+      color: #BBF7D0;
+      font-size: 0.9rem;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px 0 rgba(20,241,149,0.3);
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: rgba(255,255,255,0.1);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem 1rem 1rem 1rem;
+      background: linear-gradient(90deg, #1E293B 0%, #14F195 100%);
+      color: #86EFAC;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .hero-section h2 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Solana Web Wallet</h1>
+      <p>Lightning-Fast Solana Blockchain Management</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <h2>Experience the Speed of Solana</h2>
+      <p>
+        Solana Web Wallet is your gateway to the fastest blockchain ecosystem. With sub-second 
+        transaction finality and ultra-low fees, manage your SOL, SPL tokens, and NFTs with 
+        unprecedented speed and efficiency.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>
+          Experience sub-second transaction finality with Solana's high-performance blockchain. 
+          Send and receive SOL faster than traditional payment methods.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Ultra-Low Fees</h3>
+        <p>
+          Transaction fees as low as $0.00025. Perfect for micro-transactions, DeFi operations, 
+          and daily crypto activities without breaking the bank.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Enterprise Security</h3>
+        <p>
+          Military-grade encryption and secure key management. Your private keys are encrypted 
+          locally and never transmitted over the network.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>NFT Management</h3>
+        <p>
+          Full support for Solana NFTs and SPL tokens. View, send, and manage your digital 
+          collectibles with an intuitive interface.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Web3 Ready</h3>
+        <p>
+          Seamless integration with Solana dApps, DeFi protocols, and NFT marketplaces. 
+          Connect to any Solana application with one click.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Cross-Platform</h3>
+        <p>
+          Access your wallet from any device with a web browser. Responsive design ensures 
+          optimal experience on desktop, tablet, and mobile.
+        </p>
+      </div>
+    </div>
+
+    <div class="solana-features">
+      <h3>Why Choose Solana?</h3>
+      <div class="features-list">
+        <div class="feature-item">
+          <h4>65,000 TPS</h4>
+          <p>Handle thousands of transactions per second</p>
+        </div>
+        <div class="feature-item">
+          <h4>400ms Finality</h4>
+          <p>Transactions confirmed in under half a second</p>
+        </div>
+        <div class="feature-item">
+          <h4>$0.00025 Fees</h4>
+          <p>Lowest transaction costs in the industry</p>
+        </div>
+        <div class="feature-item">
+          <h4>Eco-Friendly</h4>
+          <p>Proof of Stake consensus mechanism</p>
+        </div>
+        <div class="feature-item">
+          <h4>Smart Contracts</h4>
+          <p>Full programmability with Rust support</p>
+        </div>
+        <div class="feature-item">
+          <h4>Interoperable</h4>
+          <p>Bridge support for cross-chain assets</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a href="#" class="cta-btn">Launch Solana Web Wallet</a>
+      <br>
+      <a href="../index.html" class="back-btn">← Back to Netarx Products</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Netarx Technologies. All rights reserved.</p>
+  </footer>
+</body>
+</html>

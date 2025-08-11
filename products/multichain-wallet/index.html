@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MultiChain Wallet | Universal Cryptocurrency Management</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8B5CF6;
+      --secondary: #7C3AED;
+      --accent: #A78BFA;
+      --dark: #4C1D95;
+      --light: #FAF5FF;
+      --card-bg: #4C1D95cc;
+      --glass: rgba(255,255,255,0.05);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 100%);
+      color: var(--light);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    header {
+      background: none;
+      color: var(--light);
+      padding: 3rem 0 2rem 0;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #DDD6FE;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .hero-section {
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .hero-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--light);
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #DDD6FE;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2rem;
+      border: 1.5px solid rgba(139,92,246,0.12);
+      transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px 0 rgba(139,92,246,0.18);
+      border: 1.5px solid var(--primary);
+    }
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .feature-card p {
+      color: #E9D5FF;
+      line-height: 1.6;
+    }
+    .supported-chains {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2rem;
+      margin: 3rem 0;
+      border: 1.5px solid rgba(139,92,246,0.12);
+    }
+    .supported-chains h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+    .chains-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    .chain-item {
+      background: rgba(139,92,246,0.1);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(139,92,246,0.2);
+    }
+    .chain-item:hover {
+      background: rgba(139,92,246,0.2);
+      transform: scale(1.05);
+      transition: all 0.3s;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px 0 rgba(139,92,246,0.3);
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: rgba(255,255,255,0.1);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem 1rem 1rem 1rem;
+      background: linear-gradient(90deg, #7C3AED 0%, #8B5CF6 100%);
+      color: #DDD6FE;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .hero-section h2 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>MultiChain Wallet</h1>
+      <p>Universal Cryptocurrency Management Across All Blockchains</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <h2>One Wallet, Infinite Possibilities</h2>
+      <p>
+        MultiChain Wallet is the ultimate solution for managing cryptocurrencies across multiple 
+        blockchain networks. From Bitcoin to Ethereum, Solana to Polygon, manage all your 
+        digital assets in one secure, intuitive interface.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Multi-Blockchain Support</h3>
+        <p>
+          Support for 50+ blockchain networks including Bitcoin, Ethereum, Solana, Polygon, 
+          BSC, and many more. Switch between networks seamlessly with a single click.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Cross-Chain Swaps</h3>
+        <p>
+          Instantly swap tokens between different blockchains without leaving the wallet. 
+          Built-in DEX aggregator finds the best rates across all networks.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Advanced Security</h3>
+        <p>
+          Multi-signature support, hardware wallet integration, and biometric authentication. 
+          Your private keys never leave your device, ensuring maximum security.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Portfolio Analytics</h3>
+        <p>
+          Comprehensive portfolio tracking with real-time price updates, performance metrics, 
+          and detailed transaction history across all supported networks.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>
+          Optimized for speed with instant transaction confirmations and real-time balance 
+          updates. Built with performance in mind for the best user experience.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Web3 Integration</h3>
+        <p>
+          Full Web3 browser integration for DeFi, NFTs, and dApp interactions. 
+          Connect to any decentralized application with built-in wallet connectivity.
+        </p>
+      </div>
+    </div>
+
+    <div class="supported-chains">
+      <h3>Supported Blockchain Networks</h3>
+      <div class="chains-grid">
+        <div class="chain-item">Bitcoin (BTC)</div>
+        <div class="chain-item">Ethereum (ETH)</div>
+        <div class="chain-item">Solana (SOL)</div>
+        <div class="chain-item">Polygon (MATIC)</div>
+        <div class="chain-item">Binance Smart Chain</div>
+        <div class="chain-item">Avalanche (AVAX)</div>
+        <div class="chain-item">Arbitrum (ARB)</div>
+        <div class="chain-item">Optimism (OP)</div>
+        <div class="chain-item">Cardano (ADA)</div>
+        <div class="chain-item">Polkadot (DOT)</div>
+        <div class="chain-item">Cosmos (ATOM)</div>
+        <div class="chain-item">Tron (TRX)</div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a href="#" class="cta-btn">Download MultiChain Wallet</a>
+      <br>
+      <a href="../index.html" class="back-btn">← Back to Netarx Products</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Netarx Technologies. All rights reserved.</p>
+  </footer>
+</body>
+</html>
